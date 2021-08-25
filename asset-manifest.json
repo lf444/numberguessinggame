@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/numberguessinggame/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/numberguessinggame/static/js/main.71cdca97.chunk.js",
-    "main.js.map": "/numberguessinggame/static/js/main.71cdca97.chunk.js.map",
+    "main.js": "/numberguessinggame/static/js/main.83a501cb.chunk.js",
+    "main.js.map": "/numberguessinggame/static/js/main.83a501cb.chunk.js.map",
     "runtime-main.js": "/numberguessinggame/static/js/runtime-main.fcd5298d.js",
     "runtime-main.js.map": "/numberguessinggame/static/js/runtime-main.fcd5298d.js.map",
     "static/js/2.af9df0ae.chunk.js": "/numberguessinggame/static/js/2.af9df0ae.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.fcd5298d.js",
     "static/js/2.af9df0ae.chunk.js",
     "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.71cdca97.chunk.js"
+    "static/js/main.83a501cb.chunk.js"
   ]
 }
