@@ -50,7 +50,6 @@ function App() {
   const jouer = () => {
     if (essaie !== "") {
       if (vie >= 1) {
-        console.log(essaie);
         if (vie > 1) {
           handleAddPrec(essaie + ", ");
         } else {
@@ -58,28 +57,24 @@ function App() {
         }
 
         if (+essaie < +objectif) {
-          console.log("trop bas");
           setToLow(true);
           setToHigh(false);
           setEssaie("");
           setVie(vie - 1);
         }
         if (+essaie > +objectif) {
-          console.log("trop haut");
           setToHigh(true);
           setToLow(false);
           setEssaie("");
           setVie(vie - 1);
         }
         if (+essaie === +objectif) {
-          console.log("c gagné fratté !");
           setPoints(vie * +diffculter);
           setToHigh(false);
           setToLow(false);
           setwin(true);
         }
       } else {
-        console.log("c perdu fratté !");
         setPoints(0);
         setLose(true);
       }
@@ -87,7 +82,7 @@ function App() {
   };
 
   const handleReset = () => {
-    setNbParti(nbparti+1);
+    setNbParti(nbparti + 1);
     setVie(10);
     setPoints(0);
     setEssaie("");
@@ -112,7 +107,7 @@ function App() {
     setLose(false);
   };
   const handleStop = () => {
-    setNbParti(nbparti+1);
+    setNbParti(nbparti + 1);
     setVie(10);
     setPoints(0);
     setPointPrecedent(points);
@@ -123,10 +118,10 @@ function App() {
     setToHigh(false);
     setToLow(false);
     setLose(false);
-  }
+  };
 
   const handleContinuer = () => {
-    setNbParti(nbparti+1);
+    setNbParti(nbparti + 1);
     setVie(10);
     setPoints(points);
     setEssaie("");
@@ -137,7 +132,7 @@ function App() {
     setToLow(false);
     setLose(false);
   };
-  
+
   useEffect(() => {
     handleReset();
   }, [diffculter]);
@@ -148,8 +143,16 @@ function App() {
         We have selected a random number. See if you can guess beteween 1 and{" "}
         {diffculter}
       </Typography>
-     {nbparti >1 ?  <Typography>C'est votre {nbparti} partie d'affilé !</Typography> : <> </>}
-     {nbparti >1 ?  <Typography>Nb point précedent {PointPrec} !</Typography> : <> </>}
+      {nbparti > 1 ? (
+        <Typography>C'est votre {nbparti}éme partie d'affilé !</Typography>
+      ) : (
+        <> </>
+      )}
+      {nbparti > 1 ? (
+        <Typography>Nb point précedent {PointPrec} !</Typography>
+      ) : (
+        <> </>
+      )}
       <Typography>Nb de points : {points}</Typography>
       <Typography>Nombre de vie restante : {vie}</Typography>
       <Typography>Vos try : {precPartieCourante}</Typography>
@@ -172,85 +175,108 @@ function App() {
           );
         })}
       </Select>
-
-      <TextField
-        variant="outlined"
-        type="number"
-        style={{ marginTop: "5px", marginBottom: "5px" }}
-        id="essaie"
-        name="essaie"
-        className="text"
-        InputProps={{
-          inputProps: {
-            max: +diffculter,
-            min: 1,
-          },
-        }}
-        value={essaie}
-        onChange={(e) => handleChangeEssaie(e)}
-      ></TextField>
-      <Button
-        onClick={() => {
-          jouer();
-        }}
-        disabled={vie < 1 || win || lose}
-        style={{ backgroundColor:"white" }}
-      >
-        TRY
-      </Button>
+      <div className={classes.btn}>
+        <TextField
+          variant="outlined"
+          type="number"
+          style={{ backgroundColor: "white", marginRight: "10px" }}
+          id="essaie"
+          InputProps={{
+            inputProps: {
+              max: +diffculter,
+              min: 1,
+            },
+          }}
+          onKeyPress={(ev) => {
+            console.log(`Pressed keyCode ${ev.key}`);
+            if (ev.key === "Enter") {
+              jouer();
+              ev.preventDefault();
+            }
+          }}
+          value={essaie}
+          onChange={(e) => handleChangeEssaie(e)}
+        ></TextField>
+        <Button
+          onClick={() => {
+            jouer();
+          }}
+          disabled={vie < 1 || win || lose}
+          style={{ backgroundColor: "white" }}
+        >
+          TRY
+        </Button>
+      </div>
       {toLow ? (
-        <Typography style={{ color: "blue" }}>c ba bg </Typography>
+        <Typography style={{ color: "blue",fontSize:"24px" }}>trop bas </Typography>
       ) : (
         <> </>
       )}
       {toHigh ? (
-        <Typography style={{ color: "yellow" }}>c haut bg </Typography>
+        <Typography style={{ color: "yellow",fontSize:"24px" }}>trop haut </Typography>
       ) : (
         <> </>
       )}
-            {win ? (
-        <Typography style={{ color: "green" }}>c gagné bg </Typography>
+      {win ? (
+        <Typography style={{ color: "green",fontSize:"24px" }}>c gagné  </Typography>
       ) : (
         <> </>
       )}
-                  {lose ? (
-        <Typography style={{ color: "red" }}>c perdu bg </Typography>
+      {lose ? (
+        <Typography style={{ color: "red",fontSize:"24px" }}>c perdu </Typography>
       ) : (
         <> </>
       )}
-          {lose ?  <Button
-        onClick={() => {
-          handleReset();
-        }}
-        style={{ backgroundColor:"white" }}
-      >
-        Recommencer ?
-      </Button> : <> </>}
-      {win ?  <Button
-        onClick={() => {
-          handleReset();
-        }}
-        style={{ backgroundColor:"white" }}
-      >
-        Stop ?
-      </Button> : <> </>}
-      {win ?  <Button
-        onClick={() => {
-          handleStop();
-        }}
-        style={{ backgroundColor:"white" }}
-      >
-       Continuer ?
-      </Button> : <> </>}
+      {lose ? (
+        <Button
+          onClick={() => {
+            handleReset();
+          }}
+          style={{ backgroundColor: "white" }}
+        >
+          Recommencer ?
+        </Button>
+      ) : (
+        <> </>
+      )}
+      {win ? (
+        <Button
+          onClick={() => {
+            handleStop();
+          }}
+          style={{ backgroundColor: "white" }}
+        >
+          Stop ?
+        </Button>
+      ) : (
+        <> </>
+      )}
+      {win ? (
+        <Button
+          onClick={() => {
+            handleContinuer();
+          }}
+          style={{ backgroundColor: "white" }}
+        >
+          Continuer ?
+        </Button>
+      ) : (
+        <> </>
+      )}
 
-      {win ?  <Button
-        onClick={() => {
-          handleResetHARD();
-        }}
-        style={{ backgroundColor:"white" }}
-      >
-       RESET HARD ?
-      </Button> : <> </>}
+      {nbparti > 1 ? (
+        <Button
+          className={classes.bottom}
+          onClick={() => {
+            handleResetHARD();
+          }}
+          style={{ backgroundColor: "white" }}
+        >
+          RESET HARD ?
+        </Button>
+      ) : (
+        <> </>
+      )}
     </div>
   );
 }
@@ -258,10 +284,17 @@ function App() {
 export default App;
 
 const useStyles = makeStyles(() => ({
-  form: {
-    width: "100%", // Fix IE 11 issue.
+  btn: {
+    alignItems: "center",
+    display: "flex",
+    margin: "2%",
   },
   submit: {
-    backgroundColor: "green",
+    fontSize: "40px",
+  },
+  bottom: {
+    position: "absolute",
+    right: 0,
+    bottom: 0,
   },
 }));
