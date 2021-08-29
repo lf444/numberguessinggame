@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/numberguessinggame/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/numberguessinggame/static/js/main.4bb60c22.chunk.js",
-    "main.js.map": "/numberguessinggame/static/js/main.4bb60c22.chunk.js.map",
-    "runtime-main.js": "/numberguessinggame/static/js/runtime-main.fcd5298d.js",
-    "runtime-main.js.map": "/numberguessinggame/static/js/runtime-main.fcd5298d.js.map",
-    "static/js/2.2c930817.chunk.js": "/numberguessinggame/static/js/2.2c930817.chunk.js",
-    "static/js/2.2c930817.chunk.js.map": "/numberguessinggame/static/js/2.2c930817.chunk.js.map",
-    "static/js/3.0c86eb14.chunk.js": "/numberguessinggame/static/js/3.0c86eb14.chunk.js",
-    "static/js/3.0c86eb14.chunk.js.map": "/numberguessinggame/static/js/3.0c86eb14.chunk.js.map",
+    "main.css": "/numberguessinggame/static/css/main.706e1159.chunk.css",
+    "main.js": "/numberguessinggame/static/js/main.8123a190.chunk.js",
+    "main.js.map": "/numberguessinggame/static/js/main.8123a190.chunk.js.map",
+    "runtime-main.js": "/numberguessinggame/static/js/runtime-main.703c6447.js",
+    "runtime-main.js.map": "/numberguessinggame/static/js/runtime-main.703c6447.js.map",
+    "static/js/2.60f8d879.chunk.js": "/numberguessinggame/static/js/2.60f8d879.chunk.js",
+    "static/js/2.60f8d879.chunk.js.map": "/numberguessinggame/static/js/2.60f8d879.chunk.js.map",
+    "static/js/3.94a52133.chunk.js": "/numberguessinggame/static/js/3.94a52133.chunk.js",
+    "static/js/3.94a52133.chunk.js.map": "/numberguessinggame/static/js/3.94a52133.chunk.js.map",
     "index.html": "/numberguessinggame/index.html",
-    "static/css/main.8c8b27cf.chunk.css.map": "/numberguessinggame/static/css/main.8c8b27cf.chunk.css.map",
-    "static/js/2.2c930817.chunk.js.LICENSE.txt": "/numberguessinggame/static/js/2.2c930817.chunk.js.LICENSE.txt"
+    "static/css/main.706e1159.chunk.css.map": "/numberguessinggame/static/css/main.706e1159.chunk.css.map",
+    "static/js/2.60f8d879.chunk.js.LICENSE.txt": "/numberguessinggame/static/js/2.60f8d879.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.fcd5298d.js",
-    "static/js/2.2c930817.chunk.js",
-    "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.4bb60c22.chunk.js"
+    "static/js/runtime-main.703c6447.js",
+    "static/js/2.60f8d879.chunk.js",
+    "static/css/main.706e1159.chunk.css",
+    "static/js/main.8123a190.chunk.js"
   ]
 }
