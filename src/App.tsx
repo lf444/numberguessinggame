@@ -4,6 +4,8 @@ import { Diffculty, getDisplayName } from "./models/number.model";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { makeStyles, MenuItem, Select, TextField } from "@material-ui/core";
+import LogoImg from "./coeur.png";
+import img2 from "./heart2.png";
 
 function App() {
   const classes = useStyles();
@@ -19,6 +21,7 @@ function App() {
   const [win, setwin] = useState<boolean>(false);
   const [lose, setLose] = useState<boolean>(false);
   const [PointPrec, setPointPrecedent] = useState<number>(0);
+  const [HighestScore, setHScore] = useState<number>(0);
 
   function getRandomInt() {
     let min: number = 1;
@@ -29,7 +32,20 @@ function App() {
   }
 
   const [objectif, setObjectif] = useState<number>(getRandomInt());
+  const NbVie = (vie: number) => {
+    let coeur = [];
+    for(let i= 0; i < vie; i++) {
+      coeur.push(<img className={classes.img} src={LogoImg}/>);
+    }
+    for(let i= 0; i < 10 - vie; i++) {
+      coeur.push(<img className={classes.img} src={img2}/>);
+    }
+    
 
+    return (
+      <div>{coeur}</div>
+    );
+  };
   const handleChangeDifficulty = (
     e: React.ChangeEvent<{ name?: string | undefined; value: unknown }>
   ) => {
@@ -49,7 +65,11 @@ function App() {
   };
   const jouer = () => {
     if (essaie !== "") {
-      if (vie >= 1) {
+      if (vie > 0) {
+        setToHigh(false);
+        setToLow(false);
+        setLose(false);
+        setwin(false);
         if (vie > 1) {
           handleAddPrec(essaie + ", ");
         } else {
@@ -58,25 +78,18 @@ function App() {
 
         if (+essaie < +objectif) {
           setToLow(true);
-          setToHigh(false);
           setEssaie("");
           setVie(vie - 1);
         }
         if (+essaie > +objectif) {
           setToHigh(true);
-          setToLow(false);
           setEssaie("");
           setVie(vie - 1);
         }
         if (+essaie === +objectif) {
           setPoints(vie * +diffculter);
-          setToHigh(false);
-          setToLow(false);
           setwin(true);
         }
-      } else {
-        setPoints(0);
-        setLose(true);
       }
     }
   };
@@ -111,6 +124,7 @@ function App() {
     setVie(10);
     setPoints(0);
     setPointPrecedent(points);
+    setHScore(points > PointPrec ? points : PointPrec);
     setEssaie("");
     setPrecPartieCourante([]);
     setObjectif(getRandomInt());
@@ -123,7 +137,9 @@ function App() {
   const handleContinuer = () => {
     setNbParti(nbparti + 1);
     setVie(10);
-    setPoints(points);
+    setPoints(PointPrec+points);
+    setPointPrecedent(points);
+    setHScore(points > PointPrec ? points : PointPrec);
     setEssaie("");
     setPrecPartieCourante([]);
     setObjectif(getRandomInt());
@@ -136,6 +152,15 @@ function App() {
   useEffect(() => {
     handleReset();
   }, [diffculter]);
+
+  useEffect(() => {
+   if(vie ===0){
+    setLose(true);
+    setPoints(0);
+    setToHigh(false);
+    setToLow(false);
+   }
+  }, [vie]);
   return (
     <div className="App">
       <h1>Number guessing game</h1>
@@ -149,12 +174,12 @@ function App() {
         <> </>
       )}
       {nbparti > 1 ? (
-        <Typography>Nb point précedent {PointPrec} !</Typography>
+        <Typography>Highest score {PointPrec} !</Typography>
       ) : (
         <> </>
       )}
       <Typography>Nb de points : {points}</Typography>
-      <Typography>Nombre de vie restante : {vie}</Typography>
+      <Typography>{NbVie(vie) }</Typography>
       <Typography>Vos try : {precPartieCourante}</Typography>
 
       <Select
@@ -296,5 +321,11 @@ const useStyles = makeStyles(() => ({
     position: "absolute",
     right: 0,
     bottom: 0,
+  },
+  img: {
+    margin:"2px",
+    width: "20px",
+    height:"20px",
+
   },
 }));
