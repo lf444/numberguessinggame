@@ -243,12 +243,12 @@ function App() {
         <> </>
       )}
       {win ? (
-        <Typography style={{ color: "green",fontSize:"24px" }}>c gagné  </Typography>
+        <Typography style={{ color: "green",fontSize:"24px" }}>c gagné le nombre était {objectif} </Typography>
       ) : (
         <> </>
       )}
       {lose ? (
-        <Typography style={{ color: "red",fontSize:"24px" }}>c perdu </Typography>
+        <Typography style={{ color: "red",fontSize:"24px" }}>c perdu le nombre était {objectif} </Typography>
       ) : (
         <> </>
       )}
